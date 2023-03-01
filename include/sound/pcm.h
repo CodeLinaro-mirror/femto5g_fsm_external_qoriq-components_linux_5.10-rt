@@ -480,6 +480,9 @@ struct snd_pcm_substream {
 	/* misc flags */
 	unsigned int hw_opened: 1;
 	unsigned int managed_buffer_alloc:1;
+#ifdef CONFIG_AUDIO_QGKI
+	spinlock_t runtime_lock;
+#endif
 };
 
 #define SUBSTREAM_BUSY(substream) ((substream)->ref_count > 0)
