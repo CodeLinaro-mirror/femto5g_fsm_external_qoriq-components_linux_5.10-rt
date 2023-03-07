@@ -3,6 +3,7 @@
  * arch/arm64/include/asm/arch_timer.h
  *
  * Copyright (C) 2012 ARM Ltd.
+ * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
  * Author: Marc Zyngier <marc.zyngier@arm.com>
  */
 #ifndef __ASM_ARCH_TIMER_H
