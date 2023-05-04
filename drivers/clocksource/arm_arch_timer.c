@@ -4,6 +4,7 @@
  *
  *  Copyright (C) 2011 ARM Ltd.
  *  All Rights Reserved
+ *  Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
  */
 
 #define pr_fmt(fmt) 	"arch_timer: " fmt
@@ -165,7 +166,7 @@ static notrace u64 arch_counter_get_cntvct_stable(void)
 	return __arch_counter_get_cntvct_stable();
 }
 
-static notrace u64 arch_counter_get_cntvct(void)
+static inline notrace u64 arch_counter_get_cntvct(void)
 {
 	return __arch_counter_get_cntvct();
 }
