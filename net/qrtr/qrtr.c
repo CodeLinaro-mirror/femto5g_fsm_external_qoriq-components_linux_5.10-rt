@@ -220,7 +220,6 @@ static u32 qrtr_log_lvl = 0;
 
 static int qrtr_debugfs_init(void)
 {
-	int rc = -EINVAL;
 	struct dentry *root;
 
 	if (!qrtr_debugfs_root) {
@@ -235,10 +234,6 @@ static int qrtr_debugfs_init(void)
 	debugfs_create_u32("log_level", 0644, qrtr_debugfs_root, (u32 *)&qrtr_log_lvl);
 
 	return 0;
-
-out_debugfs:
-	debugfs_remove_recursive(qrtr_debugfs_root);
-	return (rc);
 }
 
 static void qrtr_debugfs_deinit(void)

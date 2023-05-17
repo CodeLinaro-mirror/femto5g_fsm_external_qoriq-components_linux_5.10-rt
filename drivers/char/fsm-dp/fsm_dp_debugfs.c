@@ -773,9 +773,9 @@ static int debugfs_mempool_DL_traffic_pf_show(struct seq_file *s, void *unused)
 					&p->ts[FSM_DP_DL_APPL_SEND_REQ_INDEX],
 					pp);
 		seq_printf(s,	"Req %dth entry: "
-				"Apps Transfer Req time %ld.%ld,"
-				"Kernel Transfer Req time %ld.%ld,"
-				"Transfer Cmp time %ld.%ld, ", count,
+				"Apps Transfer Req time %lld.%ld,"
+				"Kernel Transfer Req time %lld.%ld,"
+				"Transfer Cmp time %lld.%ld, ", count,
 			p->ts[FSM_DP_DL_APPL_SEND_REQ_INDEX].tv_sec,
 			p->ts[FSM_DP_DL_APPL_SEND_REQ_INDEX].tv_nsec,
 			p->ts[FSM_DP_DL_KERNEL_SEND_REQ_INDEX].tv_sec,
