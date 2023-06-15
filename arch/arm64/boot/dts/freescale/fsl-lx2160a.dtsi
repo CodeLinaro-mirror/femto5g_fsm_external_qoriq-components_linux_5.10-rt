@@ -975,7 +975,7 @@
 			interrupt-controller;
 			#interrupt-cells = <2>;
 			enable-controller-affinity;
-			gpio-cpu-affinity = <5>;
+			gpio-cpu-affinity = <7>;
 		};
 
 		watchdog@23a0000 {
