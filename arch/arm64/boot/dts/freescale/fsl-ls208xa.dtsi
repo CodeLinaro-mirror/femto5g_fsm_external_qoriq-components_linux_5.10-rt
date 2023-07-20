@@ -956,7 +956,7 @@
 			interrupt-controller;
 			#interrupt-cells = <2>;
 			enable-controller-affinity;
-			gpio-cpu-affinity = <7>;
+			gpio-cpu-affinity = <5>;
 		};
 
 		i2c0: i2c@2000000 {
