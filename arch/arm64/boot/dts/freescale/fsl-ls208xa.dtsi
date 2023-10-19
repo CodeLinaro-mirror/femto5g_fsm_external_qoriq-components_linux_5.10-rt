@@ -1213,7 +1213,6 @@
 
 	tti {
 		gpios = <&gpio3 17 0>;
-		assert-falling-edge;
 		compatible = "tti-gpio";
 		status = "okay";
 	};

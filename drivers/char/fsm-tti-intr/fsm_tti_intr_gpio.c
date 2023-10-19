@@ -31,6 +31,14 @@ static irqreturn_t fsm_tti_gpio_irq_handler(int irq, void *irq_data)
 	struct fsm_tti_mmap_info *sdata;
 	struct fsm_tti_intr_drv *tti_intr_drv =
 		(struct fsm_tti_intr_drv *)irq_data;
+	static unsigned int allow_intr_processing = 0;
+
+	if (!tti_intr_drv->device_data->assert_falling_edge)
+	{
+		allow_intr_processing ^= 1;
+		if(!allow_intr_processing)
+			return IRQ_HANDLED;
+	}
 
 	/* update the SFN and slot number */
 	sdata = tti_intr_drv->shared_data;
@@ -151,8 +159,14 @@ static int __init fsm_tti_intr_probe(struct platform_device *pdev)
 			goto cleanup_shared_data;
 		}
 		p->device_data->irq = ret;
+
+		/*
+		 * NXP platform do not support rising edge interrupt detection.
+		 * To overcome the limitation, configuring the ISR with both
+		 * edge detection and avoiding the sfn/slot calculation on falling edge.
+		 */
 		flags = p->device_data->assert_falling_edge ?
-			IRQF_TRIGGER_FALLING : IRQF_TRIGGER_RISING;
+			IRQF_TRIGGER_FALLING : IRQ_TYPE_EDGE_BOTH;
 		if (p->device_data->capture_clear) {
 			flags |= ((flags & IRQF_TRIGGER_RISING) ?
 				IRQF_TRIGGER_FALLING : IRQF_TRIGGER_RISING);
