@@ -2,6 +2,7 @@
 /*
  * Copyright (c) 2018-2020, The Linux Foundation. All rights reserved.
  *
+ * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
  */
 
 #ifndef _MHI_INT_H
@@ -633,6 +634,12 @@ static inline void mhi_trigger_resume(struct mhi_controller *mhi_cntrl)
 	pm_wakeup_event(&mhi_cntrl->mhi_dev->dev, 0);
 	mhi_cntrl->runtime_get(mhi_cntrl);
 	mhi_cntrl->runtime_put(mhi_cntrl);
+}
+
+static inline bool is_valid_ring_ptr(struct mhi_ring *ring, dma_addr_t addr)
+{
+	return ((addr >= ring->iommu_base &&
+		addr < ring->iommu_base + ring->len) && (addr % 16 == 0));
 }
 
 /* Register access methods */
