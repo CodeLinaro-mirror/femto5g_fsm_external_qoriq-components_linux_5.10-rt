@@ -81,6 +81,4 @@ obj-$(CONFIG_VIDEO_MEDIATEK_JPEG)	+= mtk-jpeg/
 
 obj-$(CONFIG_VIDEO_QCOM_CAMSS)		+= qcom/camss/
 
-obj-$(CONFIG_VIDEO_QCOM_VENUS)		+= qcom/venus/
-
 obj-y					+= sunxi/
